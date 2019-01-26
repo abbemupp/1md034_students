@@ -10,20 +10,100 @@
       <p>
         The place to chill and have shitty, expensive burgers.
       </p>
+      
       <section>
-        <h4>What overpriced piece of shit do you want to order?</h4>
+        <h4>Place your order</h4>
         <p>
           In case you're redorted, this is where you click the picture of the burger you want to order:
         </p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>the Classic Burger</th>
+              <th>the Hot one</th>
+              <th>the Expensive</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4160.png" alt="Classic Burger" title="Classic Burger" height="200"></td>
+              <td><img src="https://www.nrn.com/sites/nrn.com/files/styles/article_featured_standard/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=th-OBTaK" alt="Spicy Burger" title="Spicy Burger" height="200"></td>
+              <td><img src="https://www.wowamazing.com/wp-content/uploads/2015/08/Some-of-the-Most-Expensive-Burgers-in-the-World.jpg" alt="Expensive Burger" title="Expensive Burger" height="200"></td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Gluten</li>
+                  <li>Vegan free</li>
+                  <li>Lactose intolerant</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Very nice</li>
+                  <li>Has taste</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Leaf gold</li>
+                  <li>Edible diamonds</li>
+                  <li>Russian caviar</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
+      
       <section>
-        <h4>Where do you want the shit delivered?</h4>
+        <h4>Customer information</h4>
         <p>
           Please enter all your information, so that i can sell it to a marketing company:
         </p>
       </section>
+
+      <section>
+        <h3>Delivery information:</h3>
+        <p>
+          <label for="fullname">Full name</label><br>
+          <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
+        </p>
+        <p>
+          <label for="email">E-mail adress</label><br>
+          <input type="email" id="email" name="email" placeholder="Enter email" required="required">
+        </p>
+        <p>
+          <label for="street">Street name</label><br>
+          <input type="text" id="street" name="street" placeholder="Enter street name" required="required">
+        </p>
+        <p>
+          <label for="house">House number</label><br>
+          <input type="number" id="house" name="house" placeholder="Enter house number" required="required">
+        </p>
+        <p>
+          <label for="paymethod">Payment method</label><br>
+          <select id="paymethod" name="paym">
+            <option>PayPal</option>
+            <option>Credit card</option>
+            <option>Invoice</option>
+            <option>Direct payment</option>
+          </select>
+        </p>
+        <p>
+          Gender<br>
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="male">Male</label><br>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label><br>
+          <input type="radio" id="other" name="gender" value="other" checked="checked">
+          <label for="other">Other/Do not wish to disclose</label><br>
+        </p>
+        <button type="submit"><img src="http://www.clker.com/cliparts/n/b/a/A/W/7/confirm-button-hi.png" alt="Place Order" height="50">
+      </section>      
     </main>
     <footer>
+      Created by Albin Kroon 2019
     </footer>
   </body>
 </html>
