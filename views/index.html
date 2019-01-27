@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Burger Heaven!</title>
     <meta charset="utf-8"/>
+    <h1 class="headerstuff">Welcome to Burger Heaven!</h1>
+    <p id="textUnderTheThing">
+      The place to chill and have shitty, expensive burgers.
+    </p>
+    <img id="headerimg" class="headerstuff" src="https://clarionoc.com/wp-content/uploads/2018/03/breakers-pub-new-floors-header.png">
   </head>
   <body>
     <main>
-      <h1>Welcome to Burger Heaven!</h1>
-      <p>
-        The place to chill and have shitty, expensive burgers.
-      </p>
+
       
-      <section>
+      <section id="burgers">
         <h4>Place your order</h4>
         <p>
           In case you're redorted, this is where you click the picture of the burger you want to order:
         </p>
         
-        <table>
+        <table class="burgertable">
           <thead>
             <tr>
               <th>the Classic Burger</th>
@@ -33,9 +36,9 @@
             <tr>
               <td>
                 <ul>
-                  <li>Gluten</li>
+                  <li>Contains <span class="allergen">gluten</span></li>
                   <li>Vegan free</li>
-                  <li>Lactose intolerant</li>
+                  <li>Contains <span class="allergen">lactose</span></li>
                 </ul>
               </td>
               <td>
@@ -56,31 +59,33 @@
         </table>
       </section>
       
-      <section>
+      <section id="delinfo">
         <h4>Customer information</h4>
         <p>
           Please enter all your information, so that i can sell it to a marketing company:
         </p>
-      </section>
-
-      <section>
+        
         <h3>Delivery information:</h3>
         <p>
           <label for="fullname">Full name</label><br>
           <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
         </p>
+        
         <p>
           <label for="email">E-mail adress</label><br>
           <input type="email" id="email" name="email" placeholder="Enter email" required="required">
         </p>
+        
         <p>
           <label for="street">Street name</label><br>
           <input type="text" id="street" name="street" placeholder="Enter street name" required="required">
         </p>
+        
         <p>
           <label for="house">House number</label><br>
           <input type="number" id="house" name="house" placeholder="Enter house number" required="required">
         </p>
+        
         <p>
           <label for="paymethod">Payment method</label><br>
           <select id="paymethod" name="paym">
@@ -90,6 +95,7 @@
             <option>Direct payment</option>
           </select>
         </p>
+        
         <p>
           Gender<br>
           <input type="radio" id="male" name="gender" value="male">
@@ -99,6 +105,7 @@
           <input type="radio" id="other" name="gender" value="other" checked="checked">
           <label for="other">Other/Do not wish to disclose</label><br>
         </p>
+        
         <button type="submit"><img src="http://www.clker.com/cliparts/n/b/a/A/W/7/confirm-button-hi.png" alt="Place Order" height="50">
       </section>      
     </main>
