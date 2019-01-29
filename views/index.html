@@ -4,11 +4,8 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Burger Heaven!</title>
     <meta charset="utf-8"/>
-    <h1 class="headerstuff">Welcome to Burger Heaven!</h1>
-    <p id="textUnderTheThing">
-      The place to chill and have shitty, expensive burgers.
-    </p>
-    <img id="headerimg" class="headerstuff" src="https://clarionoc.com/wp-content/uploads/2018/03/breakers-pub-new-floors-header.png">
+    <img id="headerimg" class="headerstuff" src="https://tinroombar.com/wp-content/uploads/2018/02/gallery-header.jpg">
+    <h1 id="siteTitle" class="headerstuff">Welcome to Burger Heaven!</h1>
   </head>
   <body>
     <main>
@@ -17,46 +14,39 @@
       <section id="burgers">
         <h4>Place your order</h4>
         <p>
-          In case you're redorted, this is where you click the picture of the burger you want to order:
+          In case you're redorted, this is where you decide which burger you want to shove in to your cake hole:
         </p>
-        
-        <table class="burgertable">
-          <thead>
-            <tr>
-              <th>the Classic Burger</th>
-              <th>the Hot one</th>
-              <th>the Expensive</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4160.png" alt="Classic Burger" title="Classic Burger" height="200"></td>
-              <td><img src="https://www.nrn.com/sites/nrn.com/files/styles/article_featured_standard/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=th-OBTaK" alt="Spicy Burger" title="Spicy Burger" height="200"></td>
-              <td><img src="https://www.wowamazing.com/wp-content/uploads/2015/08/Some-of-the-Most-Expensive-Burgers-in-the-World.jpg" alt="Expensive Burger" title="Expensive Burger" height="200"></td>
-            </tr>
-            <tr>
-              <td>
-                <ul>
-                  <li>Contains <span class="allergen">gluten</span></li>
-                  <li>Vegan free</li>
-                  <li>Contains <span class="allergen">lactose</span></li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Very nice</li>
-                  <li>Has taste</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Leaf gold</li>
-                  <li>Edible diamonds</li>
-                  <li>Russian caviar</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="wrapper center">
+          <div class="burgerbox classicB">
+            <p class="menutitle">the Classic Burger</p>
+            <img class="burgerimg" src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4160.png" alt="Classic Burger" title="Classic Burger" height="200">
+            <ul>
+              <li>Contains <span class="allergen">gluten</span></li>
+              <li>Vegan free</li>
+              <li>Contains <span class="allergen">lactose</span></li>
+            </ul>
+          </div>
+
+          <div class="burgerbox hotB">
+            <p class="menutitle">the Hot one</p>
+            <img class="burgerimg" src="https://www.nrn.com/sites/nrn.com/files/styles/article_featured_standard/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=th-OBTaK" alt="Spicy Burger" title="Spicy Burger" height="200">
+            <ul>
+              <li>Very nice</li>
+              <li>Has taste</li>
+            </ul>
+          </div>
+
+          <div class="burgerbox expenB">
+            <p class="menutitle">the Expensive</p>
+            <img class="burgerimg" src="https://www.wowamazing.com/wp-content/uploads/2015/08/Some-of-the-Most-Expensive-Burgers-in-the-World.jpg" alt="Expensive Burger" title="Expensive Burger" height="200">
+            <ul>
+              <li>Leaf gold</li>
+              <li>Edible diamonds</li>
+              <li>Russian caviar</li>
+            </ul>
+          </div>
+        </div>
       </section>
       
       <section id="delinfo">
@@ -65,7 +55,7 @@
           Please enter all your information, so that i can sell it to a marketing company:
         </p>
         
-        <h3>Delivery information:</h3>
+        <h4>Delivery information</h4>
         <p>
           <label for="fullname">Full name</label><br>
           <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
