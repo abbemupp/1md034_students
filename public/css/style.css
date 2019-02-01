@@ -1,0 +1,114 @@
+body {
+    font-family: "Courier New", monospace;
+    color: white;
+    font-size: 100%;
+    padding: 5px 5px 5px 5px;
+}
+
+.allergen {
+    text-transform: uppercase;
+    color: red;
+}
+
+#delinfo {
+    background: black;
+    color: white;
+}
+
+button:hover {
+    background: navy;
+    cursor: pointer;
+}
+
+button {
+    margin: 5px 5px 5px 5px;
+}
+
+footer {
+    border-top: 2px dashed gray;
+    background: lightgray;
+    color: gray;
+}
+
+section {
+    border: 2px dashed;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+p, h4 {
+    padding-left: 5px;
+}
+
+p {
+    font-size: 18pt;
+}
+
+h4 {
+    font-size: 24pt;
+}
+
+#headerimg {
+    width: 100%;
+    height: 0 auto;
+    opacity: 0.7;
+}
+
+#header {
+    height: 22vh;
+    background-image: url("https://tinroombar.com/wp-content/uploads/2018/02/gallery-header.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#siteTitle {
+    color: pink;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 3vw;
+    font-family: "Courier New";
+    text-align: center;
+    margin-top: 50px;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    background: black;
+    color: #444;
+    align-content: center;
+    grid-auto-flow: row;
+}
+
+#burgers {
+    background: black;
+}
+
+.burgerbox {
+    background-color: #444;
+    background-image: linear-gradient(red,black);
+    color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 150%;
+    text-align: center;
+}
+
+.burgerimg {
+    width: 80%;
+    height: 0 auto;
+    margin-left: auto;
+}
+
+.menutitle {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 20pt;
+}
+
+@media screen and (max-width: 600px) {
+    #siteTitle{
+        font-size: 5vw;
+    }
+}
