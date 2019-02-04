@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Burger Heaven!</title>
   <meta charset="utf-8"/>
+  <script type="text/javascript" src="js/menu.js" defer="defer"></script>
+  <script src="https://vuejs.org/js/vue.js" defer="defer"></script>
+  <script src="js/js_script.js" defer="defer"></script>
+  <script src="js/vue_script.js" defer="defer"></script>
   <body>
     <main>
       <section id="header">
@@ -14,36 +19,16 @@
         <p>
           This is where you decide which burger you want to shove in to your cake hole:
         </p>
-
-        <div class="wrapper center">
-          <div class="burgerbox classicB">
-            <p class="menutitle">the Classic Burger</p>
-            <img class="burgerimg" src="http://pngimg.com/uploads/burger_sandwich/burger_sandwich_PNG4160.png" alt="Classic Burger" title="Classic Burger" height="200">
+        <div id="menuGrid" class="wrapper">
+          <div class="burgerbox" v-for="burger in burgers" v-if="burger.lactose">
+            <p class="menutitle">{{ burger.name }}</p>
+            <img class="burgerimg" :src="burger.img" :alt="burger.name" :title="burger.name" height="200">
             <ul>
-              <li>Contains <span class="allergen">gluten</span></li>
-              <li>Vegan free</li>
-              <li>Contains <span class="allergen">lactose</span></li>
+              <li v-if="burger.gluten">Contains <span class="allergen">gluten</span></li>
+              <li v-if="burger.lactose">Contains <span class="allergen">lactose</span></li>
+              <li>kCal: {{ burger.kCal }}</li>
             </ul>
-          </div>
-
-          <div class="burgerbox hotB">
-            <p class="menutitle">the Hot one</p>
-            <img class="burgerimg" src="https://www.nrn.com/sites/nrn.com/files/styles/article_featured_standard/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=th-OBTaK" alt="Spicy Burger" title="Spicy Burger" height="200">
-            <ul>
-              <li>Very nice</li>
-              <li>Has taste</li>
-            </ul>
-          </div>
-
-          <div class="burgerbox expenB">
-            <p class="menutitle">the Expensive</p>
-            <img class="burgerimg" src="https://www.wowamazing.com/wp-content/uploads/2015/08/Some-of-the-Most-Expensive-Burgers-in-the-World.jpg" alt="Expensive Burger" title="Expensive Burger" height="200">
-            <ul>
-              <li>Leaf gold</li>
-              <li>Edible diamonds</li>
-              <li>Russian caviar</li>
-            </ul>
-          </div>
+          </div>          
         </div>
       </section>
       
@@ -54,48 +39,55 @@
         </p>
         
         <h4>Delivery information</h4>
-        <p>
-          <label for="fullname">Full name</label><br>
-          <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
-        </p>
-        
-        <p>
-          <label for="email">E-mail adress</label><br>
-          <input type="email" id="email" name="email" placeholder="Enter email" required="required">
-        </p>
-        
-        <p>
-          <label for="street">Street name</label><br>
-          <input type="text" id="street" name="street" placeholder="Enter street name" required="required">
-        </p>
-        
-        <p>
-          <label for="house">House number</label><br>
-          <input type="number" id="house" name="house" placeholder="Enter house number" required="required">
-        </p>
-        
-        <p>
-          <label for="paymethod">Payment method</label><br>
-          <select id="paymethod" name="paym">
-            <option>PayPal</option>
-            <option>Credit card</option>
-            <option>Invoice</option>
-            <option>Direct payment</option>
-          </select>
-        </p>
-        
-        <p>
-          Gender<br>
-          <input type="radio" id="male" name="gender" value="male">
-          <label for="male">Male</label><br>
-          <input type="radio" id="female" name="gender" value="female">
-          <label for="female">Female</label><br>
-          <input type="radio" id="other" name="gender" value="other" checked="checked">
-          <label for="other">Other/Do not wish to disclose</label><br>
-        </p>
-        
-        <button type="submit"><img src="http://www.clker.com/cliparts/n/b/a/A/W/7/confirm-button-hi.png" alt="Place Order" height="50">
-      </section>      
+        <form id="deliveryInfo">
+          <p>
+            <label for="fullname">Full name</label><br>
+            <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
+          </p>
+          
+          <p>
+            <label for="email">E-mail adress</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter email" required="required">
+          </p>
+          
+          <p>
+            <label for="street">Street name</label><br>
+            <input type="text" id="street" name="street" placeholder="Enter street name" required="required">
+          </p>
+          
+          <p>
+            <label for="house">House number</label><br>
+            <input type="number" id="house" name="house" placeholder="Enter house number" required="required">
+          </p>
+          
+          <p>
+            <label for="paymethod">Payment method</label><br>
+            <select id="paymethod" name="paym">
+              <option>PayPal</option>
+              <option>Credit card</option>
+              <option>Invoice</option>
+              <option>Direct payment</option>
+            </select>
+          </p>
+          
+          <p>
+            Gender<br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other" checked="checked">
+            <label for="other">Other/Do not wish to disclose</label><br>
+          </p>
+          <div id="placeOrder">
+            <button type="submit" id="orderButton" v-on:click="submitForm(key)">
+                    <i class="material-icons" style="font-size:48px;">shopping_cart</i>
+            </button>
+            <span v-if="key.length > 0">{{ key }}</p>
+          </div>
+
+        </form>
+
     </main>
     <footer>
       Created by Albin Kroon 2019
