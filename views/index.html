@@ -20,14 +20,16 @@
           This is where you decide which burger you want to shove in to your cake hole:
         </p>
         <div id="menuGrid" class="wrapper">
-          <div class="burgerbox" v-for="burger in burgers" v-if="burger.lactose">
-            <p class="menutitle">{{ burger.name }}</p>
+          <div class="burgerbox" v-for="burger in burgers" v-if="true">
+            <p class="menutitle" :value="burger.name">{{ burger.name }}</p>
+            <br>
             <img class="burgerimg" :src="burger.img" :alt="burger.name" :title="burger.name" height="200">
             <ul>
               <li v-if="burger.gluten">Contains <span class="allergen">gluten</span></li>
               <li v-if="burger.lactose">Contains <span class="allergen">lactose</span></li>
               <li>kCal: {{ burger.kCal }}</li>
             </ul>
+            <input class="burgerCheck" type="checkbox">I want it!</input>
           </div>          
         </div>
       </section>
@@ -80,13 +82,18 @@
             <label for="other">Other/Do not wish to disclose</label><br>
           </p>
           <div id="placeOrder">
-            <button type="submit" id="orderButton" v-on:click="submitForm(key)">
-                    <i class="material-icons" style="font-size:48px;">shopping_cart</i>
+            <button type="button" id="orderButton" v-on:click="submitForm(values)">
+              <i class="material-icons" style="font-size:48px;">shopping_cart</i>
             </button>
-            <span v-if="key.length > 0">{{ key }}</p>
+            <div v-for="value in values" v-if="values.length > 0">
+              {{ value }} <br>
+            </div>
           </div>
 
         </form>
+
+
+      </section>
 
     </main>
     <footer>

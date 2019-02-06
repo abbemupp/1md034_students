@@ -8,13 +8,11 @@ var vm = new Vue({
 vm = new Vue({
     el: "#placeOrder",
     data: {
-        key: [],
         values: []
     },
     methods: {
-        submitForm: function(key) {
-            key = getOrderInfo();
-            console.log(key);
+        submitForm: function(values) {
+            this.values = getOrderInfo();
         }
     }
 })
