@@ -1,103 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Burger Heaven!</title>
-  <meta charset="utf-8"/>
-  <script type="text/javascript" src="js/menu.js" defer="defer"></script>
-  <script src="https://vuejs.org/js/vue.js" defer="defer"></script>
-  <script src="js/js_script.js" defer="defer"></script>
-  <script src="js/vue_script.js" defer="defer"></script>
-  <body>
-    <main>
-      <section id="header">
-        <h1 id="siteTitle" class="headerstuff">Welcome to Burger Heaven!</h1>
-      </section>
-      
-      <section id="burgers">
-        <h4>Place your order</h4>
-        <p>
-          This is where you decide which burger you want to shove in to your cake hole:
-        </p>
-        <div id="menuGrid" class="wrapper">
-          <div class="burgerbox" v-for="burger in burgers" v-if="true">
-            <p class="menutitle" :value="burger.name">{{ burger.name }}</p>
-            <br>
-            <img class="burgerimg" :src="burger.img" :alt="burger.name" :title="burger.name" height="200">
-            <ul>
-              <li v-if="burger.gluten">Contains <span class="allergen">gluten</span></li>
-              <li v-if="burger.lactose">Contains <span class="allergen">lactose</span></li>
-              <li>kCal: {{ burger.kCal }}</li>
-            </ul>
-            <input class="burgerCheck" type="checkbox">I want it!</input>
-          </div>          
-        </div>
-      </section>
-      
-      <section id="delinfo">
-        <h4>Customer information</h4>
-        <p>
-          Please enter all your information, so that i can sell it to a marketing company:
-        </p>
-        
-        <h4>Delivery information</h4>
-        <form id="deliveryInfo">
-          <p>
-            <label for="fullname">Full name</label><br>
-            <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
-          </p>
-          
-          <p>
-            <label for="email">E-mail adress</label><br>
-            <input type="email" id="email" name="email" placeholder="Enter email" required="required">
-          </p>
-          
-          <p>
-            <label for="street">Street name</label><br>
-            <input type="text" id="street" name="street" placeholder="Enter street name" required="required">
-          </p>
-          
-          <p>
-            <label for="house">House number</label><br>
-            <input type="number" id="house" name="house" placeholder="Enter house number" required="required">
-          </p>
-          
-          <p>
-            <label for="paymethod">Payment method</label><br>
-            <select id="paymethod" name="paym">
-              <option>PayPal</option>
-              <option>Credit card</option>
-              <option>Invoice</option>
-              <option>Direct payment</option>
-            </select>
-          </p>
-          
-          <p>
-            Gender<br>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other" checked="checked">
-            <label for="other">Other/Do not wish to disclose</label><br>
-          </p>
-          <div id="placeOrder">
-            <button type="button" id="orderButton" v-on:click="submitForm(values)">
-              <i class="material-icons" style="font-size:48px;">shopping_cart</i>
-            </button>
-            <div v-for="value in values" v-if="values.length > 0">
-              {{ value }} <br>
-            </div>
-          </div>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/deli-very.css">
+    <title>Burger Heaven!</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/menu.js" defer="defer"></script>
+    <script src="https://vuejs.org/js/vue.js" defer="defer"></script>
+    <script src="js/js_script.js" defer="defer"></script>
 
-        </form>
+    <script src="/socket.io/socket.io.js" defer="defer"></script>
+    <script src="js/deli-very.js" defer="defer"></script>
+    <body>
+        <main>
+            <section id="header">
+                <h1 id="siteTitle" class="headerstuff">Welcome to Burger Heaven!</h1>
+            </section>
+            
+            <section id="burgers">
+                <h4>Place your order</h4>
+                <p>
+                    This is where you decide which burger you want to shove in to your cake hole:
+                </p>
+                <div id="menuGrid" class="wrapper">
+                    <div class="burgerbox" v-for="burger in burgers" v-if="true">
+                        <p class="menutitle" :value="burger.name">{{ burger.name }}</p>
+                        <br>
+                        <img class="burgerimg" :src="burger.img" :alt="burger.name" :title="burger.name" height="200">
+                        <ul>
+                            <li v-if="burger.gluten">Contains <span class="allergen">gluten</span></li>
+                            <li v-if="burger.lactose">Contains <span class="allergen">lactose</span></li>
+                            <li>kCal: {{ burger.kCal }}</li>
+                        </ul>
+                        <input class="burgerCheck" type="checkbox">I want it!</input>
+                    </div>          
+                </div>
+            </section>
+            
+            <section id="delinfo">
+                <h4>Customer information</h4>
+                <p>
+                    Please enter all your information, so that i can sell it to a marketing company:
+                </p>
+                
+                <h4>Delivery information</h4>
+                <form id="deliveryInfo">
+                    <p>
+                        <label for="fullname">Full name</label><br>
+                        <input type="text" id="fullname" name="name" placeholder="Enter full name" required="required">
+                    </p>
+                    
+                    <p>
+                        <label for="email">E-mail adress</label><br>
+                        <input type="email" id="email" name="email" placeholder="Enter email" required="required">
+                    </p>
+                    
+                    <p>
+                        <label for="paymethod">Payment method</label><br>
+                        <select id="paymethod" name="paym">
+                            <option>PayPal</option>
+                            <option>Credit card</option>
+                            <option>Invoice</option>
+                            <option>Direct payment</option>
+                        </select>
+                    </p>
+                    
+                    <p>
+                        Gender<br>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                        <input type="radio" id="other" name="gender" value="other" checked="checked">
+                        <label for="other">Other/Do not wish to disclose</label><br>
+                    </p>
 
 
-      </section>
+                </form>
+                <div id="mapOrder">
+                    <h1> Click on the map! </h1>
+                    <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                    <div class="view-box">
+                        <div id="dots" v-on:click="displayOrder">
 
-    </main>
-    <footer>
-      Created by Albin Kroon 2019
-    </footer>
-  </body>
+                            <div
+                                :style="{ left: orderCoords.x + 'px', top: orderCoords.y + 'px'}"
+                                v-if="orderCoords.x > 0 && orderCoords.y > 0">
+                                T
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="placeOrder">
+                        <button type="button" id="orderButton" v-on:click="addOrder">
+                            <i class="material-icons" style="font-size:48px;">shopping_cart</i>
+                        </button>
+                        <div v-if="orderItems.length > 0">
+                            <h1> Order confirmation </h1>              
+                            <h2> Customer details </h2>
+                            <div>
+                                Name: {{deliveryInfo[0]}} <br>
+                                Email: {{deliveryInfo[1]}} <br>
+                                Deliver to: {{orderCoords.x}} x, {{orderCoords.y}} y <br>
+                                Payment method: {{deliveryInfo[2]}} <br>
+                                Gender: {{deliveryInfo[3]}} <br>
+                            </div>
+                            <h2> Order summary </h2>
+                            <div v-for="value in orderItems" v-if="orderItems.length > 0">
+                                <ul>
+                                    <li>{{ value }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+
+            </section>
+
+        </main>
+        <footer>
+            Created by Albin Kroon 2019
+        </footer>
+    </body>
 </html>

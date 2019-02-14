@@ -57,7 +57,5 @@ function getOrderInfo()
             values.push(element.value);
         }
     }
-    values.pop(); // Removing button value   
-    values = values.concat(getBurgerOrder());
     return values;
 }
